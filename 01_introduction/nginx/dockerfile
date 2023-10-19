@@ -1,0 +1,5 @@
+FROM nginx:latest
+COPY ./files/index.html /usr/share/nginx/html/index.html
+RUN mkdir /usr/share/nginx/html/assets
+RUN mkdir /usr/share/nginx/html/assets/js
+COPY ./files/assets/style.css /usr/share/nginx/html/assets/style.css
