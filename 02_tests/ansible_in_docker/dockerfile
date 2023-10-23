@@ -1,0 +1,5 @@
+FROM debian:latest
+RUN apt-get update && apt-get install -y ansible*
+RUN mkdir ansible
+COPY ./files/ansible.cfg /ansible/ansible.cfg
+RUN mkdir /ansible/inventory

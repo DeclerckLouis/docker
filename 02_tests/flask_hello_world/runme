@@ -1,0 +1,8 @@
+#!/bin/bash
+#run by typing "bash runme" in the terminal
+
+# building image
+docker build -t flasktest:0.1 .
+
+# run the container 
+docker run -p 127.0.0.1:8000:8000 --name flasktest flasktest:0.1

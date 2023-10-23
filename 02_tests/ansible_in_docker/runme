@@ -1,0 +1,4 @@
+#!/bin/bash
+#run by typeing "bash runme" in the terminal
+#building image
+docker build -t flasktest:0.1 .
