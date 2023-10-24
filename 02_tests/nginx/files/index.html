@@ -1,43 +1,272 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <title>Louis Declerck</title>
     <meta charset="utf-8">
-    <title>NGINX From a Docker Container!</title>
-    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <meta lang="en">
+    <meta name="description" content="Louis is a student IT at Howest Bruges.">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 
 <body>
-    <header>
-
-    </header>
-    <main>
-        <h1>
-            Hello from the nginx Docker container!
-        </h1>
-        <section id="">
-            <div class="nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="content">
-                <h2>Home</h2>
-                <p>This is the home page.</p>
-            </div>
-            <div class="footer">
-                <p>My Website &copy; 2017</p>
-            </div>
+    <div class="burger"></div>
+    <div id="menu">
+        <div id="menu-fixed">
+            <ol class="crumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                    <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+                    <meta itemprop="position" content="1">
+                </li>
+                <!-- <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"> <a translate="no"
+                        itemprop="item" href="/louis"><span itemprop="name">Louis</span></a>
+                    <meta itemprop="position" content="2">
+                </li> -->
+            </ol>
+            <a translate="no" href="#" class="menu-heading">Louis Declerck</a>
         </div>
-    </main>
-
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+        <nav id="menu-scroller">
+            <ul class="nav-h2">
+                <li class=""><a href="#Examples_(TL;DR)">Examples (TL;DR)</a></li>
+                <li class=""><a href="#Synopsis">Synopsis</a></li>
+                <li><a href="#Description">Description</a></li>
+                <li><a href="#Options">Options</a></li>
+                <li><a href="#Cowfile_Format">Cowfile Format</a></li>
+                <li><a href="#Environment">Environment</a></li>
+                <li><a href="#Files">Files</a></li>
+                <li><a href="#Bugs">Bugs</a></li>
+                <li><a href="#Author">Author</a></li>
+                <li><a href="#Resources">Resources</a></li>
+                <li><a href="#See_Also">See Also</a></li>
+                <li><a href="#Referenced_By">Referenced By</a> </li>
             </ul>
+        </nav>
+    </div>
+    <main>
+        <header>
+            <h1><a translate="no" href="#">Louis Declerck<span> - Man Page</span></a></h1>
+            <p>configurable speaking/thinking human (and a bit more)</p>
+        </header>
+        <section id="Examples_(TL;DR)"><a href="#Examples_(TL;DR)">
+                <h2>Examples (TL;DR)</h2>
+            </a>
+            <ul>
+                <li><span>Print an ASCII cow saying "hello, world":</span> <code>cowsay "<var>hello, world</var>"</code>
+                </li>
+                <li><span>Print an ASCII cow saying text from <code>stdin</code>:</span>
+                    <code>echo "<var>hello, world</var>" | cowsay</code>
+                </li>
+                <li><span>List all available art types:</span> <code>cowsay <a translate="no" href="#-l">-l</a></code>
+                </li>
+                <li><span>Print the specified ASCII art saying "hello, world":</span>
+                    <code>cowsay <a translate="no" href="#-f">-f</a> <var>art</var> "<var>hello, world</var>"</code>
+                </li>
+                <li><span>Print a dead thinking ASCII cow:</span>
+                    <code>cowthink <a translate="no" href="#-d">-d</a> "<var>I'm just a cow, not a great thinker...</var>"</code>
+                </li>
+                <li><span>Print an ASCII cow with custom eyes saying "hello, world":</span>
+                    <code>cowsay <a translate="no" href="#-e">-e</a> <var>characters</var> "<var>hello, world</var>"</code>
+                </li>
+            </ul>
+            <p class="tldr-link"><a href="https://tldr.sh/">tldr.sh</a></p>
+        </section>
+        <section id="Synopsis"><a href="#Synopsis">
+                <h2>Synopsis</h2>
+            </a>
+            <p><code><strong>Louis</strong> [<strong><a translate="no" href="#-e">-e</a></strong> <em>eye_string</em>] [<strong><a translate="no" href="#-f">-f</a></strong> <em>cowfile</em> | <strong><a translate="no" href="#-r">-r</a></strong> [<strong><a translate="no" href="#-C">-C</a></strong>] ] [<strong><a translate="no" href="#-h">-h</a></strong>] [<strong><a translate="no" href="#-l">-l</a></strong>] [<strong>-n</strong>] [<strong>-T</strong> <em>tongue_string</em>] [<strong>-W</strong> <em>column</em>] [<strong>-<a translate="no" href="#-b">b</a><a translate="no" href="#-d">d</a><a translate="no" href="#-g">g</a><a translate="no" href="#-p">p</a><a translate="no" href="#-s">s</a><a translate="no" href="#-t">t</a><a translate="no" href="#-w">w</a><a translate="no" href="#-y">y</a></strong>] [&lt;message&gt;]</code>
+            </p>
+        </section>
+        <section id="Description"><a href="#Description">
+                <h2>Description</h2>
+            </a>
+            <p><em>Cowsay</em> generates an ASCII picture of a cow saying something provided by the user. If run with no
+                arguments, it accepts standard input, word-wraps the message given at about 40 columns, and prints the
+                cow saying the given message on standard output.</p>
+            <p>To aid in the use of arbitrary messages with arbitrary whitespace, use the <strong>-n</strong> option. If
+                it is specified, the given message will not be word-wrapped. This is possibly useful if you want to make
+                the cow think or speak in <a href="/6/figlet">figlet(6)</a>. If <strong>-n</strong> is specified, there
+                must not be any command line arguments left after all the switches have been processed.</p>
+            <p>The <strong>-W</strong> specifies roughly where the message should be wrapped. The default is equivalent
+                to <strong>-W 40</strong> (i.e. wrap words at or before the 40th column).</p>
+            <p>If any command-line arguments are left over after all switches have been processed, they become the cow’s
+                message. The program will not accept standard input for a message in this case.</p>
+            <p>If the program is invoked as <strong>cowthink</strong> then the cow will think its message instead of
+                saying it.</p>
+        </section>
+        <section id="Options"><a href="#Options">
+                <h2>Options</h2>
+            </a>
+            <p>There are several provided modes which change the appearance of the cow depending on its particular
+                emotional/physical state.</p>
+            <dl>
+                <dt><a translate="no" id="-b" href="#-b">-b</a></dt>
+                <dd>
+                    <p>Invokes Borg mode.</p>
+                </dd>
+                <dt><a translate="no" id="-d" href="#-d">-d</a></dt>
+                <dd>
+                    <p>Causes the cow to appear dead.</p>
+                </dd>
+                <dt><a translate="no" id="-g" href="#-g">-g</a></dt>
+                <dd>
+                    <p>Invokes greedy mode.</p>
+                </dd>
+                <dt><a translate="no" id="-p" href="#-p">-p</a></dt>
+                <dd>
+                    <p>Causes a state of paranoia to come over the cow.</p>
+                </dd>
+                <dt><a translate="no" id="-s" href="#-s">-s</a></dt>
+                <dd>
+                    <p>Makes the cow appear thoroughly stoned.</p>
+                </dd>
+                <dt><a translate="no" id="-t" href="#-t">-t</a></dt>
+                <dd>
+                    <p>Yields a tired cow.</p>
+                </dd>
+                <dt><a translate="no" id="-w" href="#-w">-w</a></dt>
+                <dd>
+                    <p>Is somewhat the opposite of <strong><a translate="no" href="#-t">-t</a></strong>, and initiates
+                        wired mode.</p>
+                </dd>
+                <dt><a translate="no" id="-y" href="#-y">-y</a></dt>
+                <dd>
+                    <p>Brings on the cow’s youthful appearance.</p>
+                </dd>
+                <dt><a translate="no" id="-e" href="#-e">-e</a></dt>
+                <dd>
+                    <p>Selects the appearance of the cow’s eyes, in which case the first two characters of the argument
+                        string <em>eye_string</em> will be used. The default eyes are <strong>oo</strong>. The tongue is
+                        similarly configurable through <strong>-T</strong> and <em>tongue_string</em>; it must be two
+                        characters and does not appear by default. However, it does appear in the <em>dead</em> and
+                        <em>stoned</em> modes. Any configuration done by <strong><a translate="no"
+                                href="#-e">-e</a></strong> and <strong>-T</strong> will be lost if one of the provided
+                        modes is used.
+                    </p>
+                </dd>
+                <dt><a translate="no" id="-f" href="#-f">-f</a></dt>
+                <dd>
+                    <p>Specifies a particular cow picture file (<em>cowfile</em>) to use. If the cowfile spec resolves
+                        to an existing file, then it will be interpreted as a path to the cowfile. Otherwise, cowsay
+                        will search the COWPATH for a cowfile with that name. Additional cowpath entries may be
+                        specified in the <strong>COWPATH</strong> environment variable. To list all cowfiles on the
+                        current <strong>COWPATH</strong>, invoke <strong>cowsay</strong> with the <strong><a
+                                translate="no" href="#-l">-l</a></strong> switch.</p>
+                </dd>
+                <dt><a translate="no" id="-r" href="#-r">-r</a></dt>
+                <dd>
+                    <p>Chooses a random cow from the cows on the <strong>COWPATH</strong>.</p>
+                </dd>
+                <dt><a translate="no" id="-C" href="#-C">-C</a></dt>
+                <dd>
+                    <p>Enables true-color (24-bit) cows. Currently only has an effect when used in conjunction with
+                        <strong><a translate="no" href="#-r">-r</a></strong>.
+                    </p>
+                </dd>
+                <dt><a translate="no" id="-l" href="#-l">-l</a></dt>
+                <dd>
+                    <p>Lists the defined cows on the current <strong>COWPATH</strong>. Displays it in a human-readable
+                        pretty-printed format when displaying to a terminal device. When sent to a non-terminal device,
+                        outputs the list in a parsing-friendly format with one cow name per line and no headers or blank
+                        lines.</p>
+                </dd>
+                <dt><a translate="no" id="-h" href="#-h">-h</a></dt>
+                <dd>
+                    <p>Displays a help screen.</p>
+                </dd>
+            </dl>
+        </section>
+        <section id="Cowfile_Format"><a href="#Cowfile_Format">
+                <h2>Cowfile Format</h2>
+            </a>
+            <p>A cowfile is made up of a simple block of <a href="/1/perl">perl(1)</a> code, which assigns a picture of
+                a cow to the variable <strong>$the_cow</strong>. Should you wish to customize the eyes or the tongue of
+                the cow, then the variables <strong>$eyes</strong> and <strong>$tongue</strong> may be used. The trail
+                leading up to the cow’s message balloon is composed of the character(s) in the
+                <strong>$thoughts</strong> variable. Any backslashes must be reduplicated to prevent interpretation.
+                Also, at-signs ("@") must be backslashed because that is what Perl 5 expects. The name of a cowfile must
+                end with <strong>.cow</strong>, otherwise it is not recognized as a cowfile.
+            </p>
+        </section>
+        <section id="Environment"><a href="#Environment">
+                <h2>Environment</h2>
+            </a>
+            <p>The <strong>COWPATH</strong> environment variable, if present, will be used to search for cowfiles. It
+                contains a colon-separated list of directories, much like <strong>PATH</strong> or
+                <strong>MANPATH</strong>.
+            </p>
+            <p>The default <strong>COWPATH</strong> is searched after entries in the user-specified
+                <strong>COWPATH</strong> environment variable. To suppress this behavior (e.g. for development work),
+                set the <strong>COWSAY_ONLY_COWPATH</strong> environment variable to <strong>1</strong>. In this case,
+                <strong>COWPATH</strong> should contain at least a directory with a file called
+                <strong>default.cow</strong> in it.
+            </p>
+        </section>
+        <section id="Files"><a href="#Files">
+                <h2>Files</h2>
+            </a>
+            <p><strong>%PREFIX%/share/cowsay/cows</strong> holds a sample set of cowfiles. Your <strong>COWPATH</strong>
+                automatically contains this directory, unless <strong>COWSAY_ONLY_COWPATH</strong> is set to
+                <strong>1</strong>.
+            </p>
+            <p><strong>%PREFIX%/share/cowsay/site-cows</strong> is provided for administrators to install custom cows.
+                Cows in <strong>share/cowsay/site-cows</strong> take precedence over cows with the same name in
+                <strong>share/cowsay/cows</strong>. The <strong>site-cows</strong> directory will never be modified by
+                cowsay installations, so custom cows defined there will persist across upgrades of cowsay.
+                <strong>site-cows</strong> is also on the default <strong>COWPATH</strong>.
+            </p>
+            <p><strong>%PREFIX%/etc/cowsay/cowpath.d/</strong> (or <strong>/etc/cowsay/cowpath.d/</strong> when %PREFIX%
+                is <strong>/usr</strong>) is a directory that contains files which list entries to be added to the
+                default <strong>COWPATH</strong>. This mechanism allows third-party cow collections to register
+                themselves with cowsay in a way that does not require per-user configuration.</p>
+        </section>
+        <section id="Bugs"><a href="#Bugs">
+                <h2>Bugs</h2>
+            </a>
+            <p>If there are any, please report them on Louis' GitHub page
+                (<a href="https://github.com/declercklouis">https://github.com/declercklouis</a>)
+                or notify the author at the address below.</p>
+        </section>
+        <section id="Author"><a href="#Author">
+                <h2>Author</h2>
+            </a>
+            <p>This page is maintained by Louis himself <a href="MAILTO:declerck.louis@outlook.com">
+                    (declerck.louis@outlook.com)</a>
+            </p>
+            <p>Louis was originally written by his parents, with suggestions from his siblings
+                and contributions from other family members.</p>
+        </section>
+        <section id="Resources"><a href="#Resources">
+                <h2>Resources</h2>
+            </a>
+            <p>GitHub: <a href="https://github.com/declercklouis">https://github.com/declercklouis</a></p>
+            <p>Main web site: <a
+                    href="https://www.linkedin.com/in/louis-declerck-student/">https://www.linkedin.com/in/louis-declerck-student/</a>
+            </p>
+        </section>
+        <section id="See_Also"><a href="#See_Also">
+                <h2>See Also</h2>
+            </a>
+            <p><strong><a href="https://github.com/DeclerckLouis/ansible">The ansible repo</a></strong></p>
+            <p><strong><a href="https://github.com/DeclerckLouis/myscripts">The myscripts repo</a></strong></p>
+            <p><strong><a href="https://github.com/DeclerckLouis/docker">The docker repo</a></strong></p>
+        </section>
+        <section id="Referenced_By"><a href="#Referenced_By">
+                <h2>Referenced By</h2>
+            </a>
+            <p>The man page cowthink(1) is an alias of cowsay(1).</p>
+            <div class="man-page-info">05/28/2020 Cowsay 3.7.0 Cowsay Manual</div>
+        </section>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/about">About</a></li>
+            <li></li>
+        </ul>
     </footer>
+    <script src="/js/bundle-2.js"></script>
+    <script src="/js/man-page-1.js"></script>
 </body>
-</html>⏎
+
+</html>
