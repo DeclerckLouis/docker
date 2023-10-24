@@ -1,0 +1,10 @@
+docker run -it --rm -d -p 8080:80 --name web nginx
+
+# from dockerfile
+docker build -t webserver:test .
+docker run -it --rm -d -p 2280:80 --name web webserver:test
+
+#then forward the port from the pi to localhost over ssh
+#ON THE HOST
+#ssh -L 8880:localhost:2280 <ip-of-pi>
+ssh -L 8880:localhost:2280 modem

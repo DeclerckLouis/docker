@@ -1,0 +1,8 @@
+#!/bin/bash
+#run by typing "bash stop" in the terminal
+
+# stop and remove container
+docker stop webserver
+docker rm webserver
+
+
