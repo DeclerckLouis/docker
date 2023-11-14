@@ -8,3 +8,8 @@ docker run -it --rm -d -p 2280:80 --name web webserver:test
 #ON THE HOST
 #ssh -L 8880:localhost:2280 <ip-of-pi>
 ssh -L 8880:localhost:2280 modem
+
+
+#pushing images
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
