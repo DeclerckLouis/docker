@@ -1,0 +1,7 @@
+FROM debian:latest
+RUN apt-get update && apt-get install -y python3 python3-pip
+RUN apt-get install curl ca-certificates apt-transport-https software-properties-common lsb-release postgresql -y
+RUN curl -fsSL https://apt.metasploit.com/metasploit-framework.gpg.key | sudo gpg --dearmor | sudo tee /usr/share/keyrings/metasploit.gpg > /dev/null
+RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/metasploit.gpg] https://apt.metasploit.com/ stable main" | sudo tee /etc/apt/sources.list.d/metasploit.list
+RUN apt-get update && apt-get install metasploit-framework -y
+
