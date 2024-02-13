@@ -1,0 +1,2 @@
+docker build -t myapp:latest .
+docker run -d -p --restart=unless-stopped 8443:443 myapp 
