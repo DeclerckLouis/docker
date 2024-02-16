@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  web:
+    #### BUILD FROM DOCKERFILE
+    # build: 
+    #   context: .
+    #   dockerfile: dockerfile
+
+    #### PULL FROM DOCKER HUB
+    image: declercklouis/webapp:latest
+    container_name: nginx2
+    ports:
+      - "8443:443"
