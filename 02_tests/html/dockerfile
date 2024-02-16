@@ -2,7 +2,7 @@
 FROM nginx:latest
 
 # copy 5up files
-COPY ./5up/html5up-aerial /usr/share/nginx/html
+COPY ./files /usr/share/nginx/html
 
 # create keys
 RUN mkdir /var/keys

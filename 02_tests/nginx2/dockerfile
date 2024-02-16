@@ -1,0 +1,18 @@
+#pull image node version 12.16.3
+FROM nginx:latest
+
+# Create /code directory and set it as the working directory
+WORKDIR /usr/share/nginx/html
+
+COPY ./files .
+
+# Create key directory & keys
+WORKDIR /var/keys
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl.key -out ssl.crt -subj "/C=BE/ST=Namur/L=Wallonie/O=undefined/CN=www.undefinedcontainer.com"
+
+# Copy the nginx configuration file
+COPY .//config/nginx.conf /etc/nginx/conf.d/default.conf
+
+# expose the port
+EXPOSE 443
+
