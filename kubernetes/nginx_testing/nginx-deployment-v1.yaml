@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
+        # image updated using "kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.16.1"
         image: nginx:1.14.2
         ports:
         - containerPort: 80
