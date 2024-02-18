@@ -1,5 +1,17 @@
-#pull image node version 12.16.3
 FROM nginx:latest
+
+RUN apt-get update && apt-get install -y openssh-server openssl git rsyslog
+
+# Configure SSH
+RUN mkdir /var/run/sshd
+RUN echo 'root:12OKQ8jqsd9!qsd' | chpasswd
+
+
+#password for user login
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# Start SSH server
+CMD ["/usr/sbin/sshd", "-D"]
 
 # Create /code directory and set it as the working directory
 WORKDIR /usr/share/nginx/html
@@ -13,6 +25,6 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl.key -out ssl
 # Copy the nginx configuration file
 COPY .//config/nginx.conf /etc/nginx/conf.d/default.conf
 
-# expose the port
+# expose the ports
 EXPOSE 443
-
+EXPOSE 22

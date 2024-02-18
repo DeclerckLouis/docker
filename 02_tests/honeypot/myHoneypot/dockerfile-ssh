@@ -1,0 +1,33 @@
+FROM debian:latest
+
+RUN apt-get update && apt-get install -y openssh-server curl rsyslog
+
+# Configure SSH
+RUN mkdir /var/run/sshd
+RUN useradd -m -d /home/admin admin
+RUN useradd -m -d /home/admlukas admlukas && usermod -aG sudo admlukas
+
+
+WORKDIR /home/admlukas
+RUN mkdir .ssh
+RUN chmod 700 .ssh
+RUN touch .ssh/authorized_keys
+RUN chmod 600 .ssh/authorized_keys
+RUN curl https://github.com/declercklouis.keys > /home/admlukas/.ssh/authorized_keys
+
+
+## don't allow password login for ssh admlukas
+RUN echo 'admlukas:12OKQ8jqsd9!qsd' | chpasswd
+
+#password for user login
+RUN echo 'root:redhat' | chpasswd
+RUN echo 'admin:admin' | chpasswd
+
+#password for user login
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+
+# Start SSH server
+CMD ["/usr/sbin/sshd", "-D"]
+
+EXPOSE 22

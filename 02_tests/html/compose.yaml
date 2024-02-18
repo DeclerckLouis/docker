@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  nginx-ssl:
+    #### BUILD FROM DOCKERFILE
+    build: 
+      context: .
+      dockerfile: dockerfile
+    container_name: html
+    ports:
+      - "4443:443"
+    networks:
+      - NginxNet
+    volumes:
+      - /var/log/honeypot:/var/log/honeypot
+    restart: unless-stopped
+
+networks:
+  NginxNet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.80.0/24
+          gateway: 10.10.80.1
+          ip_range: 10.10.80.10/24
+
+
+
+  # webapp:
+  #   #### PULL FROM DOCKER HUB
+  #   image: declercklouis/webapp:latest
+    
