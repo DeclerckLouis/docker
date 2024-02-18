@@ -8,7 +8,7 @@ services:
       dockerfile: dockerfile-ssh
     container_name: HoneyPot-ssh
     ports:
-      - "6022:22"
+      - "3022:22"
     networks:
       - HoneyPotNet
     volumes:
