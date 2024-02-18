@@ -27,7 +27,10 @@ RUN echo 'admin:admin' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
 
-# Start SSH server
-CMD ["/usr/sbin/sshd", "-D"]
+# create scripts dir and copy scripts
+RUN mkdir /tmp/scripts
+WORKDIR /tmp/scripts
+COPY ./files/scripts .
+CMD ["/bin/bash", "/tmp/scripts/start.sh"]
 
 EXPOSE 22
